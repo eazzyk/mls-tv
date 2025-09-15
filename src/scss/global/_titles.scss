@@ -1,0 +1,70 @@
+@use "/src/scss/utils/adaptive";
+.title-limit--1 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.title-limit--2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.section-title {
+  font-family: "FFF Hero Bold", sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--section-title-color);
+  border-bottom: 4px solid var(--section-title-border-color);
+
+  @include adaptive.respond-to(mobile) {
+    font-size: 30px;
+  }
+  @include adaptive.respond-to(tablet) {
+    font-size: 34px;
+  }
+  @include adaptive.respond-to(desktop) {
+    font-size: 38px;
+  }
+}
+.news-feed-main-title {
+  font-size: 12px;
+  font-weight: 800;
+  // text-transform: uppercase;
+
+  @include adaptive.respond-to(mobile) {
+    font-size: 14px;
+  }
+  @include adaptive.respond-to(tablet) {
+    font-size: 18px;
+  }
+  @include adaptive.respond-to(desktop) {
+    font-size: 24px;
+  }
+}
+.side-title {
+  font-family: "FFF Hero Bold", sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--side-title-color);
+
+  @include adaptive.respond-to(mobile) {
+    font-size: 22px;
+  }
+  @include adaptive.respond-to(tablet) {
+    font-size: 26px;
+  }
+  @include adaptive.respond-to(desktop) {
+    font-size: 30px;
+  }
+}
+.news-feed-side-title {
+  font-size: 16px;
+  font-weight: 800;
+}

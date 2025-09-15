@@ -1,0 +1,5 @@
+@use "fonts";
+@use "resets"; // - 1
+@use "utils"; // теперь respond-to доступен везде
+@use "global"; // все глобальные стили
+@use "components"; // все глобальные стили

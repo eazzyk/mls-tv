@@ -1,0 +1,71 @@
+.up-matches {
+  // display: flex;
+  &__link {
+    height: 100%;
+  }
+}
+.up-matches-card {
+  display: grid;
+  width: 100%;
+  height: 100%;
+
+  &__header {
+    background-color: var(--primary-color);
+    color: var(--white-text-color);
+    padding: 12px 8px;
+    border-top-left-radius: var(--card-border-radius);
+    border-top-right-radius: var(--card-border-radius);
+    text-align: center;
+  }
+  &__date {
+    font-size: 12px;
+  }
+  &__content {
+    display: grid;
+    gap: var(--gap-basic);
+    height: 100%;
+    border-left: 1px solid var(--border-card-color);
+    border-right: 1px solid var(--border-card-color);
+    border-bottom: 1px solid var(--border-card-color);
+    border-bottom-left-radius: var(--card-border-radius);
+    border-bottom-right-radius: var(--card-border-radius);
+    padding: 16px;
+  }
+  &__names {
+    display: grid;
+    justify-content: center;
+    gap: 4px;
+
+    &-link {
+      font-family: "FFF Equipe Bold";
+      font-size: 22px;
+      font-weight: 800;
+      transition: var(--transition);
+      &:hover {
+        text-decoration: underline;
+        color: var(--gold-color);
+      }
+    }
+  }
+  &__logos {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    gap: var(--gap-basic);
+    &-link {
+      display: inline-flex;
+      height: 100%;
+      max-height: 80px;
+    }
+  }
+  &__mc {
+    display: grid;
+    justify-content: center;
+  }
+}
+.card-versus {
+  font-family: "FFF Hero Bold";
+  font-size: 32px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}

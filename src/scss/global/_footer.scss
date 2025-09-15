@@ -1,0 +1,71 @@
+@use "/src/scss/utils/adaptive";
+
+.footer {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  background-color: var(--footer-bg-color);
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  &__top {
+    display: flex;
+    justify-content: center;
+  }
+  &__menu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    gap: 64px;
+    border-bottom: 1px solid var(--border-footer-color);
+    border-top: 1px solid var(--border-footer-color);
+    @include adaptive.respond-to(laptop) {
+      justify-content: space-between;
+    }
+  }
+  &__bot {
+    display: flex;
+    justify-content: center;
+  }
+}
+.footer-logo {
+  height: 64px;
+}
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  &__title {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--white-text-color);
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  &__item {
+    display: flex;
+  }
+  &__link {
+    display: inline-flex;
+    font-size: 11px;
+    color: var(--white-text-color);
+    &:hover {
+      text-decoration: underline;
+    }
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
+.footer-copyrights {
+  font-size: 10px;
+  text-align: center;
+  color: var(--white-text-color);
+}

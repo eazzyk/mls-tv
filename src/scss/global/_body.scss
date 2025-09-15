@@ -1,0 +1,39 @@
+body {
+  font-family: "FFF Equipe News", sans-serif;
+  font-size: 14px;
+  color: var(--primary-color);
+}
+.section {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    &-top {
+      display: flex;
+    }
+  }
+}
+
+.card-category {
+  font-size: 10px;
+  padding: 4px 8px;
+  background-color: var(--tag-color);
+  border-radius: var(--card-border-radius);
+  color: var(--white-text-color);
+}
+.card-date {
+  margin: 0;
+  font-size: 10px;
+  color: var(--card-date-color);
+  &--dark {
+    color: var(--description-color);
+  }
+}
+.img-contain {
+  object-fit: contain;
+}
+.img-cover {
+  object-fit: cover;
+}
