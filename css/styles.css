@@ -1,0 +1,1528 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "FFF Hero Bold";
+  src: url("/fonts/fff-hero-bold.ec97c54f.woff") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "FFF Equipe News";
+  src: url("/fonts/fff-equipe-news.28afa5de.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "FFF Equipe Bold";
+  src: url("/fonts/fff-equipe-bold.7b49be2d.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+/***
+    The new CSS reset - version 1.11 (last updated 20.9.2023)
+    GitHub page: https://github.com/elad2412/the-new-css-reset
+***/
+/*
+    Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
+    - The "symbol *" part is to solve Firefox SVG sprite bug
+    - The "html" element is excluded, otherwise a bug in Chrome breaks the CSS hyphens property (https://github.com/elad2412/the-new-css-reset/issues/36)
+ */
+*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
+  all: unset;
+  display: revert;
+}
+
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* Fix mobile Safari increase font-size on landscape mode */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+      text-size-adjust: none;
+}
+
+/* Reapply the pointer cursor for anchor tags */
+a,
+button {
+  cursor: revert;
+}
+
+/* Remove list styles (bullets/numbers) */
+ol,
+ul,
+menu {
+  list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+img {
+  max-inline-size: 100%;
+  max-block-size: 100%;
+}
+
+/* removes spacing between cells in tables */
+table {
+  border-collapse: collapse;
+}
+
+/* Safari - solving issue when using user-select:none on the <body> text input doesn't working */
+input,
+textarea {
+  -webkit-user-select: auto;
+}
+
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+  white-space: revert;
+}
+
+/* minimum style to allow to style meter element */
+meter {
+  -webkit-appearance: revert;
+  -moz-appearance: revert;
+       appearance: revert;
+}
+
+/* preformatted text - use only for this feature */
+:where(pre) {
+  all: revert;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* reset default text opacity of input placeholder */
+::-webkit-input-placeholder {
+  color: unset;
+}
+::-moz-placeholder {
+  color: unset;
+}
+:-ms-input-placeholder {
+  color: unset;
+}
+::-ms-input-placeholder {
+  color: unset;
+}
+::placeholder {
+  color: unset;
+}
+
+/* remove default dot (•) sign */
+::marker {
+  content: initial;
+}
+
+/* fix the feature of 'hidden' attribute.
+   display:revert; revert to element instead of attribute */
+:where([hidden]) {
+  display: none;
+}
+
+/* revert for bug in Chromium browsers
+   - fix for the content editable attribute will work properly.
+   - webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element*/
+:where([contenteditable]:not([contenteditable=false])) {
+  -moz-user-modify: read-write;
+  -webkit-user-modify: read-write;
+  overflow-wrap: break-word;
+  -webkit-line-break: after-white-space;
+  -webkit-user-select: auto;
+}
+
+/* apply back the draggable feature - exist only in Chromium and Safari */
+:where([draggable=true]) {
+  -webkit-user-drag: element;
+}
+
+/* Revert Modal native behavior */
+:where(dialog:modal) {
+  all: revert;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-style: none;
+}
+
+ul,
+ol,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  font-style: normal;
+  color: inherit;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/* Forms
+   ========================================================================== */
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+button,
+input {
+  /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+button,
+select {
+  /* 1 */
+  text-transform: none;
+}
+
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  -webkit-appearance: button;
+  cursor: pointer;
+  border: none;
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+button::-moz-focus-inner,
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+button:-moz-focusring,
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Correct the padding in Firefox.
+ */
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+legend {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box; /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10.
+ * 2. Remove the padding in IE 10.
+ */
+[type=checkbox],
+[type=radio] {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+[type=search] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/* Interactive
+   ========================================================================== */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/* Misc
+   ========================================================================== */
+/**
+ * Add the correct display in IE 10+.
+ */
+template {
+  display: none;
+}
+
+/**
+ * Add the correct display in IE 10.
+ */
+[hidden] {
+  display: none;
+}
+
+:root {
+  --wrapper-bg-color: #ffffff;
+  --primary-color: #0c3153;
+  --description-color: #626262;
+  --header-bg-color: #151e2c;
+  --gold-color: #cdae72;
+  --tag-color: #004686;
+  --white-text-color: #ffffff;
+  --border-card-color: #e7edf3;
+  --section-title-color: #0c3153;
+  --section-title-border-color: #cdae72;
+  --side-title-color: #0c3153;
+  --footer-bg-color: #001a31;
+  --border-footer-color: rgba(231, 237, 243, 0.25);
+  --side-feed-bg-color: #f7f7f7;
+  --card-date-color: #f7f7f7;
+  --btn-1-color: #d0021b;
+  --transition: all 0.25s ease-in-out;
+  --card-border-radius: 8px;
+  --gap-basic: 16px;
+}
+
+body {
+  font-family: "FFF Equipe News", sans-serif;
+  font-size: 14px;
+  color: var(--primary-color);
+}
+
+.section {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.section__inner {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+          flex-direction: column;
+  gap: 16px;
+}
+.section__inner-top {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+}
+
+.card-category {
+  font-size: 10px;
+  padding: 4px 8px;
+  background-color: var(--tag-color);
+  border-radius: var(--card-border-radius);
+  color: var(--white-text-color);
+}
+
+.card-date {
+  margin: 0;
+  font-size: 10px;
+  color: var(--card-date-color);
+}
+.card-date--dark {
+  color: var(--description-color);
+}
+
+.img-contain {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.img-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.wrapper-global {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+          flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--wrapper-bg-color);
+}
+
+.container {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.header {
+  padding: 8px 0;
+  z-index: 999;
+  background-color: var(--header-bg-color);
+}
+.header__inner {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+     -moz-box-pack: justify;
+          justify-content: space-between;
+}
+.header--sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.header-logo {
+  height: 24px;
+  width: 24px;
+}
+
+.nav__list {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+          align-items: center;
+  gap: 16px;
+}
+.nav__list-item {
+  display: inline-block;
+}
+.nav__link {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -moz-inline-box;
+  display: inline-flex;
+  color: var(--white-text-color);
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-bottom: 3px solid transparent;
+  padding-bottom: 8px;
+  margin-top: 8px;
+  -webkit-transition: var(--transition);
+  -moz-transition: var(--transition);
+  transition: var(--transition);
+}
+.nav__link:hover {
+  border-bottom: 3px solid var(--tag-color);
+}
+.nav__link--active {
+  border-bottom: 4px solid var(--tag-color);
+}
+
+.burger-toggle {
+  display: block;
+  background: none;
+  outline: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+}
+
+.nav__list {
+  display: none;
+}
+
+.burger-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background: var(--header-bg-color);
+  z-index: 999;
+  -webkit-transform: translateX(100%);
+     -moz-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+          transform: translateX(100%);
+  -webkit-transition: all 0.25s ease-out;
+  -moz-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
+}
+.burger-wrapper__top {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+     -moz-box-pack: end;
+          justify-content: flex-end;
+}
+
+.burger-wrapper.is-open {
+  -webkit-transform: translateX(0);
+     -moz-transform: translateX(0);
+      -ms-transform: translateX(0);
+          transform: translateX(0);
+}
+
+.mob-menu__list {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+     -moz-box-align: start;
+          align-items: flex-start;
+  gap: 32px;
+  margin-top: 48px;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+  height: 90%;
+}
+
+.mob-menu__link {
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+  font-size: 20px;
+  border-left: 2px solid rgba(141, 141, 141, 0.4);
+  padding-left: 16px;
+  text-transform: uppercase;
+}
+
+.mob-menu__link:hover {
+  color: rgb(165, 179, 243);
+  text-decoration: underline;
+}
+
+.main {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+     -moz-box-flex: 1;
+          flex: 1;
+}
+
+.title-limit--1 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.title-limit--2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.section-title {
+  font-family: "FFF Hero Bold", sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--section-title-color);
+  border-bottom: 4px solid var(--section-title-border-color);
+}
+
+.news-feed-main-title {
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.side-title {
+  font-family: "FFF Hero Bold", sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--side-title-color);
+}
+
+.news-feed-side-title {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.swiper {
+  /* padding: 0 16px; */
+}
+
+.slider-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+          align-items: center;
+  gap: 16px; /* Отступ между кнопками и слайдером */
+  max-width: 100%; /* Максимальная ширина контейнера */
+  /* padding: 0 20px; Отступы по краям для мобильных устройств */
+  overflow: hidden;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #022ae2;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+          justify-content: center;
+  -webkit-transition: background-color 0.3s;
+  -moz-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  position: relative;
+  margin: 0;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.btn-1 {
+  font-family: "FFF Equipe Bold";
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -moz-inline-box;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+          align-items: center;
+  text-align: center;
+  padding: 12px 24px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: var(--btn-1-color);
+  color: var(--white-text-color);
+  border: 2px solid transparent;
+  border-radius: 4px;
+  -webkit-transition: var(--transition);
+  -moz-transition: var(--transition);
+  transition: var(--transition);
+}
+.btn-1:hover {
+  background-color: var(--white-text-color);
+  color: var(--btn-1-color);
+  border-color: var(--btn-1-color);
+}
+
+.footer {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  background-color: var(--footer-bg-color);
+}
+.footer__inner {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+          flex-direction: column;
+  gap: 16px;
+}
+.footer__top {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+          justify-content: center;
+}
+.footer__menu {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+          justify-content: center;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  gap: 64px;
+  border-bottom: 1px solid var(--border-footer-color);
+  border-top: 1px solid var(--border-footer-color);
+}
+.footer__bot {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+          justify-content: center;
+}
+
+.footer-logo {
+  height: 64px;
+}
+
+.footer-nav {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+          flex-direction: column;
+  gap: 16px;
+}
+.footer-nav__title {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--white-text-color);
+}
+.footer-nav__list {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+          flex-direction: column;
+  gap: 12px;
+}
+.footer-nav__item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+}
+.footer-nav__link {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -moz-inline-box;
+  display: inline-flex;
+  font-size: 11px;
+  color: var(--white-text-color);
+}
+.footer-nav__link:hover {
+  text-decoration: underline;
+}
+.footer-nav__link:focus {
+  text-decoration: underline;
+}
+
+.footer-copyrights {
+  font-size: 10px;
+  text-align: center;
+  color: var(--white-text-color);
+}
+
+.slider-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+          align-items: center;
+  gap: 16px; /* Отступ между кнопками и слайдером */
+  max-width: 100%; /* Максимальная ширина контейнера */
+  /* padding: 0 20px; Отступы по краям для мобильных устройств */
+  overflow: hidden;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: var(--primary-color);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+          justify-content: center;
+  -webkit-transition: background-color 0.3s;
+  -moz-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  position: relative;
+  margin: 0;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 20px;
+  font-weight: 800;
+}
+.news-feed__col-main {
+  display: grid;
+}
+.news-feed__col-aside {
+  display: none;
+}
+
+.news-feed-main {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+          flex-direction: column;
+  gap: var(--gap-basic);
+}
+.news-feed-main__item-1 {
+  grid-area: 1/1/2/3;
+}
+.news-feed-main__item-2 {
+  grid-area: 1/3/2/4;
+}
+.news-feed-main__item-3 {
+  grid-area: 2/1/3/2;
+}
+.news-feed-main__item-4 {
+  grid-area: 2/2/3/4;
+}
+
+.news-feed-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--card-border-radius);
+  height: 180px; /* фиксируем высоту */
+}
+.news-feed-card__link {
+  height: 100%;
+  color: var(--white-text-color);
+  -webkit-transition: var(--transition);
+  -moz-transition: var(--transition);
+  transition: var(--transition);
+}
+.news-feed-card__link:hover {
+  color: var(--gold-color);
+}
+.news-feed-card__link:focus {
+  color: var(--gold-color);
+}
+.news-feed-card__imgbox, .news-feed-card__img {
+  height: 100%;
+  -webkit-filter: brightness(0.91);
+          filter: brightness(0.91);
+  -o-object-position: top;
+     object-position: top;
+}
+.news-feed-card__overlay {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+          flex-direction: column;
+  gap: 16px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 16px;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(30%, rgba(0, 0, 0, 0.8)), color-stop(70%, rgba(0, 0, 0, 0.3)), to(rgba(0, 0, 0, 0)));
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.8) 30%, rgba(0, 0, 0, 0.3) 70%, rgba(0, 0, 0, 0) 100%);
+  background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.8) 30%, rgba(0, 0, 0, 0.3) 70%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 30%, rgba(0, 0, 0, 0.3) 70%, rgba(0, 0, 0, 0) 100%);
+}
+.news-feed-card__header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+     -moz-box-align: start;
+          align-items: flex-start;
+  gap: 8px;
+}
+
+.news-feed-aside {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+          flex-direction: column;
+  gap: var(--gap-basic);
+  height: 480px;
+  overflow-y: scroll;
+}
+.news-feed-aside__link {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+.news-feed-aside__link:hover .news-feed-side-title {
+  text-decoration: underline;
+}
+.news-feed-aside__header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+     -moz-box-align: start;
+          align-items: flex-start;
+  gap: 8px;
+}
+.news-feed-aside__content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+          flex-direction: column;
+  gap: 16px;
+}
+.news-feed-aside__imgbox {
+  overflow: hidden;
+  border-radius: var(--card-border-radius);
+}
+
+.up-matches__link {
+  height: 100%;
+}
+
+.up-matches-card {
+  display: grid;
+  width: 100%;
+  height: 100%;
+}
+.up-matches-card__header {
+  background-color: var(--primary-color);
+  color: var(--white-text-color);
+  padding: 12px 8px;
+  border-top-left-radius: var(--card-border-radius);
+  border-top-right-radius: var(--card-border-radius);
+  text-align: center;
+}
+.up-matches-card__date {
+  font-size: 12px;
+}
+.up-matches-card__content {
+  display: grid;
+  gap: var(--gap-basic);
+  height: 100%;
+  border-left: 1px solid var(--border-card-color);
+  border-right: 1px solid var(--border-card-color);
+  border-bottom: 1px solid var(--border-card-color);
+  border-bottom-left-radius: var(--card-border-radius);
+  border-bottom-right-radius: var(--card-border-radius);
+  padding: 16px;
+}
+.up-matches-card__names {
+  display: grid;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+          justify-content: center;
+  gap: 4px;
+}
+.up-matches-card__names-link {
+  font-family: "FFF Equipe Bold";
+  font-size: 22px;
+  font-weight: 800;
+  -webkit-transition: var(--transition);
+  -moz-transition: var(--transition);
+  transition: var(--transition);
+}
+.up-matches-card__names-link:hover {
+  text-decoration: underline;
+  color: var(--gold-color);
+}
+.up-matches-card__logos {
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+  gap: var(--gap-basic);
+}
+.up-matches-card__logos-link {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -moz-inline-box;
+  display: inline-flex;
+  height: 100%;
+  max-height: 80px;
+}
+.up-matches-card__mc {
+  display: grid;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+          justify-content: center;
+}
+
+.card-versus {
+  font-family: "FFF Hero Bold";
+  font-size: 32px;
+  display: grid;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+          align-items: center;
+}
+
+.video-feed {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: var(--gap-basic);
+  grid-row-gap: var(--gap-basic);
+}
+.video-feed__card {
+  height: 100%;
+}
+.video-feed__link {
+  height: 100%;
+  color: var(--white-text-color);
+  -webkit-transition: var(--transition);
+  -moz-transition: var(--transition);
+  transition: var(--transition);
+}
+.video-feed__link:hover {
+  color: var(--gold-color);
+}
+.video-feed__link:focus {
+  color: var(--gold-color);
+}
+.video-feed__imgbox, .video-feed__img {
+  height: 100%;
+  -webkit-filter: brightness(0.91);
+          filter: brightness(0.91);
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: top;
+     object-position: top;
+}
+.video-feed__content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+          flex-direction: column;
+  gap: 16px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 16px;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(30%, rgba(0, 0, 0, 0.8)), color-stop(70%, rgba(0, 0, 0, 0.3)), to(rgba(0, 0, 0, 0)));
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.8) 30%, rgba(0, 0, 0, 0.3) 70%, rgba(0, 0, 0, 0) 100%);
+  background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.8) 30%, rgba(0, 0, 0, 0.3) 70%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 30%, rgba(0, 0, 0, 0.3) 70%, rgba(0, 0, 0, 0) 100%);
+}
+
+.video-feed__card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.video-feed__thumbnail {
+  position: relative;
+}
+
+.video-feed__thumbnail img {
+  display: block;
+  width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.video-feed__duration {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  padding: 2px 6px;
+  font-size: 12px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 4px;
+}
+
+.video-feed__title {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.video-feed__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+     -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  font-size: 32px;
+  color: rgba(255, 255, 255, 0.9);
+  pointer-events: none;
+}
+
+.video-feed__item {
+  height: 280px;
+  grid-column: span 4;
+}
+.video-feed__item:nth-child(1) {
+  grid-column: span 4;
+}
+.video-feed__item:nth-child(2) {
+  grid-column: span 4;
+}
+.video-feed__item:nth-child(3) {
+  grid-column: span 4;
+}
+
+.vid-play-btn {
+  background: var(--primary-color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+     -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  font-size: 48px;
+  color: rgba(255, 255, 255, 0.9);
+  pointer-events: none;
+  border-radius: 50%;
+  height: 64px;
+  width: 64px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -moz-inline-box;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+          align-items: center;
+}
+
+@media (min-width: 480px){
+  .header-logo {
+    height: 36px;
+    width: 36px;
+  }
+  .section-title {
+    font-size: 30px;
+  }
+  .news-feed-main-title {
+    font-size: 14px;
+  }
+  .side-title {
+    font-size: 22px;
+  }
+  .news-feed-card {
+    height: 220px; /* фиксируем высоту */
+  }
+  .video-feed__item {
+    grid-column: span 2;
+  }
+  .video-feed__item:nth-child(1) {
+    grid-column: span 2;
+  }
+  .video-feed__item:nth-child(2) {
+    grid-column: span 2;
+  }
+  .video-feed__item:nth-child(3) {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 768px){
+  .header-logo {
+    height: 44px;
+    width: 44px;
+  }
+  .section-title {
+    font-size: 34px;
+  }
+  .news-feed-main-title {
+    font-size: 18px;
+  }
+  .side-title {
+    font-size: 26px;
+  }
+  .news-feed-main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+  .news-feed-card {
+    height: 260px; /* фиксируем высоту */
+  }
+  .video-feed__item {
+    grid-column: auto;
+  }
+  .video-feed__item:nth-child(1) {
+    grid-row: 1/3;
+    grid-column: 1/3;
+    height: 100%;
+  }
+  .video-feed__item:nth-child(2) {
+    grid-row: 1;
+    grid-column: span 2;
+  }
+  .video-feed__item:nth-child(3) {
+    grid-row: 2;
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 1024px){
+  .burger-toggle {
+    display: none;
+  }
+  .nav__list {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: flex;
+  }
+  .footer__menu {
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+       -moz-box-pack: justify;
+            justify-content: space-between;
+  }
+}
+
+@media (min-width: 1280px){
+  .header-logo {
+    height: 50px;
+    width: 50px;
+  }
+  .section-title {
+    font-size: 38px;
+  }
+  .news-feed-main-title {
+    font-size: 24px;
+  }
+  .side-title {
+    font-size: 30px;
+  }
+  .news-feed {
+    display: grid;
+    -webkit-box-align: start;
+    -webkit-align-items: start;
+       -moz-box-align: start;
+            align-items: start;
+    grid-template-columns: 3fr 1fr;
+    gap: var(--gap-basic);
+  }
+  .news-feed__col-aside {
+    display: grid;
+    -webkit-align-content: flex-start;
+            align-content: flex-start;
+    height: 100%;
+    gap: var(--gap-basic);
+    padding: 16px;
+    overflow-y: auto;
+    background-color: var(--side-feed-bg-color);
+  }
+  .news-feed-main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+  .news-feed-card {
+    height: 300px; /* фиксируем высоту */
+  }
+}
